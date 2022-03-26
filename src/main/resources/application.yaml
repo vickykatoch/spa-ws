@@ -1,0 +1,35 @@
+server:
+  port: 8000
+  #  ssl:
+  #    key-store:
+  #    key-store-password: secret
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: text/html, text/xml, text/plain, text/css, text/javascript, application/javascript, application/json, application/xml, application/pdf
+  tomcat:
+    accesslog:
+      enabled: true
+      pattern: "%t %a \"%r\" %s (%D ms)"
+    basedir: D:\deployed\logs
+spring:
+  web:
+    resources:
+      static-locations: file:/D:\deployed\assets\, file:/D:\deployed\appConfigs\
+  application:
+    name: SPAWebServer
+logging:
+  level:
+    ROOT: DEBUG
+
+spa:
+  app-config-loc: D:\deployed\appConfigs\
+  app-name: react-web-app
+  assets-loc: D:\deployed\assets\
+  config-route-name: appConfigs
+  supportedMimeTypes: "html,js,json,css,csv,gif,jpeg,jpg,png,ico,svg,tff,woff,woff2,yaml,map,appcache,pdf,zip"
+  cacheDuration: 3600 # seconds, 0 means no-caching
+  etag:
+    enabled: true
