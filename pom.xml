@@ -2,6 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+<!--	<scm>-->
+<!--		<connection>scm:git:</connection>-->
+<!--	</scm>-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -11,6 +14,7 @@
 	<groupId>org.avam</groupId>
 	<artifactId>spa-ws</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+<!--	<version>1.0.0</version>-->
 	<name>spa-ws</name>
 	<description>Single Page Host Web Server </description>
 	<properties>
@@ -34,6 +38,56 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>repackage</id>-->
+<!--						<goals>-->
+<!--							<goal>repackage</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<classifier>exec</classifier>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+			</plugin>
+<!--			<plugin>-->
+<!--				<artifactId>maven-release-plugin</artifactId>-->
+<!--				<version>2.5.3</version>-->
+<!--			</plugin>-->
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-jar-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<archive>-->
+<!--						<manifest>-->
+<!--							<addClasspath>true</addClasspath>-->
+<!--							<classpathPrefix>lib/</classpathPrefix>-->
+<!--							<mainClass>org.avam.spaws.SpaWebServerApplication</mainClass>-->
+<!--						</manifest>-->
+<!--					</archive>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>org.avam.spaws.SpaWebServerApplication</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
